@@ -1,4 +1,3 @@
-//osas4real
 
 import express  from "express";
 
