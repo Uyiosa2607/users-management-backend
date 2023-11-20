@@ -27,8 +27,6 @@ const PORT = process.env.PORT || 5000;
 
 app.use("/api", router);
 
-app.use(express.static('public'));
-
 app.get("/", (req, res) => {
 
     res.status(200).send("Backend Server is up and running")
