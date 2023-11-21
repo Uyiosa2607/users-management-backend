@@ -138,7 +138,7 @@ router.delete("/users/remove/:id", verifyAndAuthorization, async (req, res) => {
       if (deletedUser) {
         res.status(200).json("User Profile deleted");
       } else {
-        res.status(404).json("User not found");
+        res.status(203).json("User not found");
       }
     } catch (error) {
       console.error("Error deleting user:", error);
