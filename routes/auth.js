@@ -38,7 +38,7 @@ router.post("/login",async (req, res) => {
 
   const {email, password } = req.body;
 
-  const user = await User.findOne({ email }).select("-password");
+  const user = await User.findOne({ email });
 
   if(user) {
 
@@ -52,14 +52,15 @@ router.post("/login",async (req, res) => {
           expiresIn: "15m",
         });
 
+        const { password, ...others } = user._doc;
 
         res.cookie("token", accessToken, { maxAge: 20 * 60 * 1000,
           sameSite: "none",
           secure: true,
-          httpOnly:true
+          httpOnly: true,
          });
 
-        res.status(200).json({ user, accessToken });
+        res.status(200).json({ ...others, accessToken });
     
       } else {
 
