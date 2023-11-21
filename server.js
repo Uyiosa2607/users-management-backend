@@ -13,7 +13,7 @@ const app = express();
 
 app.use(cors({ origin: "https://users-management-project.netlify.app",
 credentials: true,
-exposedHeaders:  ["Set-cookie"] }));
+exposedHeaders:  ["Set-Cookie"] }));
 
 app.use(cookieParser());
 
