@@ -12,7 +12,8 @@ dotenv.config();
 const app = express();
 
 app.use(cors({ origin: "https://users-management-project.netlify.app",
-credentials: true }));
+credentials: true,
+exposedHeaders:  ["Set-cookie"] }));
 
 app.use(cookieParser());
 
