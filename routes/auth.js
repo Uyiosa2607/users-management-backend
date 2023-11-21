@@ -55,8 +55,8 @@ router.post("/login",async (req, res) => {
         const { password, ...others } = user._doc;
 
         res.cookie("token", accessToken, { maxAge: 20 * 60 * 1000,
-          sameSite: "None",
-          secure,
+          sameSite: "none",
+          secure: true,
           httpOnly:true
          });
 
