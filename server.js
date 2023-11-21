@@ -13,7 +13,8 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://users-management-70e1.onrender.com",
+    //origin: "https://users-management-70e1.onrender.com",
+    origin: "http://localhost:5173",
     credentials: true,
     exposedHeaders: ["Set-Cookie"],
   })
