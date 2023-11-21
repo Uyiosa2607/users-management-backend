@@ -83,9 +83,9 @@ router.post("/login",async (req, res) => {
 
 // Get User Profile
 
-router.get("/users/:userId", verifyToken, async (req, res, next) => {
+router.get("/users/:id", verifyAndAuthorization, async (req, res, next) => {
 
-  const id = req.params.userId;
+  const id = req.params.id;
   
   try {
 
