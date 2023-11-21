@@ -60,7 +60,7 @@ router.post("/login",async (req, res) => {
           httpOnly:true
          });
 
-        res.status(200).json({ ...others });
+        res.status(200).json({ ...others, accessToken });
     
       } else {
 
