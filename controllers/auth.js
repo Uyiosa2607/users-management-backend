@@ -51,11 +51,12 @@ async function register(req, res){
     const { name, email, password } = req.body;
 
     try {
-        const newUser = await User.create({
+        await User.create({
         name: name,
         email: email,
         password: password,
       });
+      
     } catch (error) {
       res.status(203).json(error)
     }
