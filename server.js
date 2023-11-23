@@ -7,31 +7,33 @@ import cors from "cors";
 
 import cookieParser from "cookie-parser";
 
+import connectDB from "./db.js";
+
+import authRoutes from "./routes/auth.js";
+import userRoutes from "./routes/users.js";
+
+
 dotenv.config();
+
+connectDB();
 
 const app = express();
 
 app.use(
   cors({
     origin: "https://users-management-70e1.onrender.com",
-    credentials: true,
-    exposedHeaders: ["Set-Cookie"],
+    credentials: true
   })
 );
 
 app.use(cookieParser());
 
-import connectDB from "./db.js"
-
-import router from "./routes/auth.js";
-
 app.use(express.json());
-
-connectDB();
 
 const PORT = process.env.PORT || 5000;
 
-app.use("/api", router);
+app.use("/api/auth", authRoutes);
+app.use("/api",userRoutes);
 
 app.get("/", (req, res) => {
 

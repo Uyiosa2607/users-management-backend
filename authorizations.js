@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 export function verifyToken(req, res, next) {
 
   const token = req.cookies.token;
-
+  
   if (token) {
 
     jwt.verify(token, process.env.JWT_SEC, (err, user) => {
@@ -43,6 +43,9 @@ export function verifyAndAuthorization(req, res, next){
 
     })
 }
+
+
+
 
 //Checks if user is admin 
 
