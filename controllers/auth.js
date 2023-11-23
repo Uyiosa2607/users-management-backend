@@ -30,7 +30,7 @@ async function login(req, res){
             maxAge: 20 * 60 * 1000,
             sameSite: "none",
             secure: true,
-            httpOnly: false,
+            httpOnly: true,
           });
 
           res.status(200).json({ ...others, accessToken });
