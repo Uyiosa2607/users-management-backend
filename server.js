@@ -22,7 +22,7 @@ const app = express();
 app.use(
   cors({
     origin: "https://users-management-70e1.onrender.com",
-    credentials: true
+    credentials: true,
   })
 );
 

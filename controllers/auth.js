@@ -47,11 +47,11 @@ async function login(req, res){
 
 //Register controller
 
-async function register(){
+async function register(req, res){
     const { name, email, password } = req.body;
 
     try {
-      await User.create({
+        const newUser = await User.create({
         name: name,
         email: email,
         password: password,
