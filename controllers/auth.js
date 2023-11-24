@@ -47,27 +47,29 @@ async function login(req, res){
 
 //Register controller
 
-async function register(req, res){
+async function register(req, res) {
+  const { name, email, password } = req.body;
 
-    const { name, email, password } = req.body;
-
+  try {
+    // Generate a salt
     const salt = await bcrypt.genSalt(10);
 
-    const hashedPassword = bcrypt.hash(password, salt);
+    // Hash the password using the generated salt
+    const hashedPassword = await bcrypt.hash(password, salt);
 
-    try {
-        await User.create({
-        name: name,
-        email: email,
-        password: hashedPassword,
-      });
+    // Create a new user with the hashed password
+    await User.create({
+      name: name,
+      email: email,
+      password: hashedPassword,
+    });
 
-    } catch (error) {
-      res.status(203).json(error)
-    }
-
-    res.status(200).json({ message: "User added to database" });
-
+    res.status(200).json("User added to the database");
+  } catch (error) {
+    // Handle errors, such as duplicate email or database connection issues
+    console.error("Error registering user:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 }
 
 export {login, register};
