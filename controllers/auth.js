@@ -48,15 +48,20 @@ async function login(req, res){
 //Register controller
 
 async function register(req, res){
+
     const { name, email, password } = req.body;
+
+    const salt = await bcrypt.genSalt(10);
+
+    const hashedPassword = bcrypt.hash(password, salt);
 
     try {
         await User.create({
         name: name,
         email: email,
-        password: password,
+        password: hashedPassword,
       });
-      
+
     } catch (error) {
       res.status(203).json(error)
     }
